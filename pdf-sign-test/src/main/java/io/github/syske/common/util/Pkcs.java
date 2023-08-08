@@ -177,6 +177,20 @@ public class Pkcs {
         return cert;
     }
 
+    /**
+     * .cer文件即证书文件，表示一种认证。.p12 文件是通过.cer文件导出的文件。
+     * .pem文件一种可阅读格式的文件（文本文件），文件内容可能代表的是证书、可能代表私钥等
+     * .oca.pem: （中间）证书文件
+     * .rca.pem:（根部）证书文件
+     * .pfx: 一种归档文件，可以同时存储证书、私钥等内容，就比如上面的both.pfx其实就是其他所有文件的总和。
+     * .cer:二进制格式的证书文件
+     * crt.pem： PEM格式的证书文件，文本文件可阅读
+     * .key: 二进制密钥文件，上图为私钥文件
+     * .key.pem:PEM格式的密钥文件，上图中对应的文件为pkcs#1格式的PEM私钥文件
+     * .key.p8:PEM格式的私钥文件，上图中对应的文件为pkcs#8格式的PEM私钥文件
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         // CN: 名字与姓氏    OU : 组织单位名称
         // O ：组织名称  L : 城市或区域名称  E : 电子邮件
@@ -186,10 +200,10 @@ public class Pkcs {
         String certificateCRL = "https://syske.github.io/";
         Map<String, byte[]> result = createCert("123456", issuerStr, subjectStr, certificateCRL);
 
-        FileOutputStream outPutStream = new FileOutputStream("D:/keystore.p12"); // ca.jks
+        FileOutputStream outPutStream = new FileOutputStream("D:/sign/keystore.p12"); // ca.jks
         outPutStream.write(result.get("keyStoreData"));
         outPutStream.close();
-        FileOutputStream fos = new FileOutputStream(new File("D:/keystore.cer"));
+        FileOutputStream fos = new FileOutputStream(new File("D:/sign/keystore.cer"));
         fos.write(result.get("certificateData"));
         fos.flush();
         fos.close();

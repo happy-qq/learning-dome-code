@@ -35,7 +35,7 @@ import java.util.UUID;
 public class SignPdf {
     private static Logger logger = Logger.getLogger(SignPdf.class);
     private static final String PASSWORD = "123456"; // 秘钥密码
-    private static final String KEY_STORE_PATH = "d:\\keystore.p12"; // 秘钥文件路径
+    private static final String KEY_STORE_PATH = "d:\\sign\\keystore.p12"; // 秘钥文件路径
 
     private SignPdf() {
     }
@@ -325,9 +325,9 @@ public class SignPdf {
     }
 
     public static void main(String[] args) throws Exception {
-        sign("E:\\workSpeace\\learning_files\\projects\\learning-dome-code\\ireport-demo\\ireport-demo.pdf",//
-                "D:\\signed-35.pdf",
-                "E:\\workSpeace\\learning_files\\yzz.png",
+        sign("d:\\sign\\demo.pdf",//
+                "D:\\sign\\signed-demo.pdf",
+                "D:\\sign\\sign.png",
                 null, null, "领导签字", null, PageStyle.PAGE_STYLE_PORTRAIT);
         // read();
 
